@@ -6,22 +6,14 @@ class Form extends Component {
 
     this.state = {};
 
-    this.updateFirstName = this.updateFirstName.bind(this);
-    this.updateLastName = this.updateLastName.bind(this);
-    this.processVolTypeSelection = this.processVolTypeSelection.bind(this);
+    this.updateKey = this.updateKey.bind(this);
     this.submit = this.submit.bind(this);
   }
 
-  updateFirstName(e) {
-    this.setState({ firstName: e.target.value });
-  }
-
-  updateLastName(e) {
-    this.setState({ lastName: e.target.value });
-  }
-
-  processVolTypeSelection(e){
-    this.setState({ volunteerType: e.target.value });
+  updateKey(key) {
+    return function(e) {
+      this.setState({ [key]: e.target.value })
+    }.bind(this);
   }
 
   submit(e) {
@@ -35,23 +27,23 @@ class Form extends Component {
         <form className="ui form">
           <div className="field">
             <label>First Name</label>
-            <input type="text" name="first-name" placeholder="First Name" onChange={this.updateFirstName} />
+            <input type="text" name="first-name" placeholder="First Name" onChange={this.updateKey('firstName')} />
           </div>
           <div className="field">
             <label>Last Name</label>
-            <input type="text" name="last-name" placeholder="Last Name" onChange={this.updateLastName} />
+            <input type="text" name="last-name" placeholder="Last Name" onChange={this.updateKey('lastName')} />
           </div>
           <div className="grouped fields">
             <label>What kind of volunteer are you?</label>
             <div className="field">
               <div className="ui radio checkbox">
-                <input className="volunteer-type" type="radio" name="volunteer-type" value="technical" onChange={this.processVolTypeSelection} />
+                <input className="volunteer-type" type="radio" name="volunteer-type" value="technical" onChange={this.updateKey('volunteerType')} />
                 <label>I am a technical volunteer.</label>
               </div>
             </div>
             <div className="field">
               <div className="ui radio checkbox">
-                <input className="volunteer-type" type="radio" name="volunteer-type" value="non-technical" onChange={this.processVolTypeSelection} />
+                <input className="volunteer-type" type="radio" name="volunteer-type" value="non-technical" onChange={this.updateKey('volunteerType')} />
                 <label>I am a non-technical volunteer.</label>
               </div>
             </div>
