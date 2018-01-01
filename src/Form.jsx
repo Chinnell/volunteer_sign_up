@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StepTwo from './StepTwo';
 
 class Form extends Component {
   constructor() {
@@ -48,12 +49,11 @@ class Form extends Component {
               </div>
             </div>
           </div>
+          <StepTwo volunteerType={this.state.volunteerType } />
           <button className="ui button" type="submit" onClick={this.submit}>Submit</button>
         </form>
 
-        <div id="step-2">
-          <h1></h1>
-        </div>
+
       </div>
     );
   }

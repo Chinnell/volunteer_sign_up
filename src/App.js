@@ -10,12 +10,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Form formName="topForm" />
+        <Form />
       </div>
     );
   }
 }
 
 export default App;
-
-
